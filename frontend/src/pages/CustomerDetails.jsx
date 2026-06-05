@@ -119,7 +119,12 @@ function CustomerDetails() {
                 <Info label="Full Name"      value={`${customer.firstName} ${customer.lastName}`} />
                 <Info label="Gender"         value={customer.gender} />
                 <Info label="Age"            value={customer.age} />
-                <Info label="Height"         value={customer.height} />
+               <Info
+                  label="Height"
+                  value={customer.height?.includes("'")
+                    ? customer.height.split("'").reverse().join("'")
+                    : customer.height}
+                />
                 <Info label="City"           value={customer.city} />
                 <Info label="Country"        value={customer.country} />
                 <Info label="Marital Status" value={customer.maritalStatus} />
