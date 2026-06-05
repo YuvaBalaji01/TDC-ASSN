@@ -117,9 +117,11 @@ router.get("/:id", async (req, res) => {
       (a, b) => b.score - a.score
     );
 
-    return res.json(
-      scoredMatches.slice(0, 5)
+    const filteredMatches = scoredMatches.filter(
+      (match) => match.score > 0
     );
+
+    res.json(filteredMatches.slice(0, 30));
   } catch (error) {
     console.error("MATCH ERROR:");
     console.error(error);
